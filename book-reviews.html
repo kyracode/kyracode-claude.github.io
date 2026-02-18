@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Reviews — Kyra Jolly</title>
+  <meta name="description" content="Critical book reviews across fiction, non-fiction, and literary criticism." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .review-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(6,13,26,0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .review-card__cover {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      background: var(--grad-film);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      letter-spacing: 0.12em;
+      position: relative;
+    }
+
+    .review-card__cover-text {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.25rem 1.25rem;
+      background: linear-gradient(to top, rgba(6,13,26,0.9), transparent);
+      color: white;
+    }
+
+    .review-card__cover-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+    }
+
+    .review-card__cover-author {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .review-card__body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .review-card__genre {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .review-card__excerpt {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ═════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Kyra <span>Jolly</span></a>
+        <ul class="nav__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="films.html">Films</a></li>
+          <li><a href="finance.html">Finance</a></li>
+          <li><a href="book-reviews.html">Books</a></li>
+          <li><a href="film-reviews.html">Film Reviews</a></li>
+        </ul>
+        <button class="nav__hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="films.html">Films</a>
+    <a href="finance.html">Finance</a>
+    <a href="book-reviews.html">Books</a>
+    <a href="film-reviews.html">Film Reviews</a>
+  </div>
+
+  <!-- ═══ Page Header ════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content">
+        <span class="label fade-in">Book Reviews</span>
+        <h1 class="display-2 fade-in fade-in-delay-1" style="color:white; margin-top:0.75rem;">
+          Reading as a<br/><em style="font-style:italic; font-weight:300;">way of seeing.</em>
+        </h1>
+        <p class="fade-in fade-in-delay-2">Critical responses to fiction, non-fiction, and everything in between — asking not just what a book says, but how and why it says it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Reviews Grid ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter -->
+      <div class="filter-bar fade-in">
+        <span class="topic-pill active" data-topic="all">All Books</span>
+        <span class="topic-pill" data-topic="fiction">Fiction</span>
+        <span class="topic-pill" data-topic="nonfiction">Non-fiction</span>
+        <span class="topic-pill" data-topic="essays">Essays</span>
+        <span class="topic-pill" data-topic="poetry">Poetry</span>
+      </div>
+
+      <div class="reviews-grid">
+
+        <!--
+          ╔══════════════════════════════════════════════════════════╗
+          ║  BOOK REVIEW TEMPLATE — Copy this block to add a review ║
+          ╚══════════════════════════════════════════════════════════╝
+        -->
+        <article class="review-card fade-in" data-topic="fiction">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #1A2D5A, #2D1B69);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">Piranesi</div>
+              <div class="review-card__cover-author">Susanna Clarke</div>
+            </div>
+          </div>
+          <!-- Replace .review-card__cover div with: <img src="assets/images/books/piranesi.jpg" alt="Piranesi cover" class="review-card__cover"> -->
+          <div class="review-card__body">
+            <div class="review-card__genre">Fiction · Fantasy</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-card__excerpt">Clarke builds an impossible, luminous world — a house with infinite halls and tidal statues — and populates it with a narrator of heartbreaking gentleness. A meditation on isolation, identity, and the fragility of the self we believe in.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <!-- END TEMPLATE -->
+
+        <article class="review-card fade-in fade-in-delay-1" data-topic="nonfiction">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #0D3050, #1A4580);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">The Dawn of Everything</div>
+              <div class="review-card__cover-author">David Graeber &amp; David Wengrow</div>
+            </div>
+          </div>
+          <div class="review-card__body">
+            <div class="review-card__genre">Non-fiction · History</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-card__excerpt">A thrilling act of historiographical sabotage. Graeber and Wengrow dismantle the grand narratives of human progress, revealing a past full of political experimentation, democratic moments, and choices far more varied than we've been taught.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="review-card fade-in fade-in-delay-2" data-topic="fiction">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #2D1060, #1A0840);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">Fever Dream</div>
+              <div class="review-card__cover-author">Samanta Schweblin</div>
+            </div>
+          </div>
+          <div class="review-card__body">
+            <div class="review-card__genre">Fiction · Horror</div>
+            <div class="stars">★★★★½</div>
+            <p class="review-card__excerpt">Compressed, airless, and utterly terrifying. Schweblin writes dread the way other writers write sunsets — with an eye for the precise detail that transforms ordinary things into omens. A masterclass in sustained unease.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="review-card fade-in" data-topic="essays">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #1A3560, #0D2048);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">A Field Guide to Getting Lost</div>
+              <div class="review-card__cover-author">Rebecca Solnit</div>
+            </div>
+          </div>
+          <div class="review-card__body">
+            <div class="review-card__genre">Essays · Memoir</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-card__excerpt">Solnit writes about loss, wandering, and the unknown with a precision that feels impossible for subject matter this amorphous. She makes getting lost feel like a practice, a discipline, a way of remaining alive to the world.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="review-card fade-in fade-in-delay-1" data-topic="nonfiction">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #3D1060, #250840);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">Capital in the Twenty-First Century</div>
+              <div class="review-card__cover-author">Thomas Piketty</div>
+            </div>
+          </div>
+          <div class="review-card__body">
+            <div class="review-card__genre">Non-fiction · Economics</div>
+            <div class="stars">★★★★</div>
+            <p class="review-card__excerpt">Piketty's grand historical argument — that capital tends to accumulate faster than economies grow, producing ever-greater inequality — is compelling even where it's flawed. A book that changed how economists and politicians talk about wealth.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="review-card fade-in fade-in-delay-2" data-topic="poetry">
+          <div class="review-card__cover" style="background: linear-gradient(145deg, #1A4530, #0D2820);">
+            <div class="review-card__cover-text">
+              <div class="review-card__cover-title">Citizen: An American Lyric</div>
+              <div class="review-card__cover-author">Claudia Rankine</div>
+            </div>
+          </div>
+          <div class="review-card__body">
+            <div class="review-card__genre">Poetry · Essay</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-card__excerpt">A work that refuses genre like it refuses easy comfort. Rankine moves between poetry, essay, and visual art to document the ongoing, accumulated weight of racial microaggression in America. Necessary and devastating.</p>
+            <a href="#" class="btn btn--ghost" style="margin-top:auto;">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__logo">Kyra Jolly</div>
+          <p class="footer__tagline">Film, writing, and economic thought from a creative perspective.</p>
+          <div class="footer__social">
+            <a href="#" class="social-link">𝕏</a>
+            <a href="#" class="social-link">◎</a>
+            <a href="#" class="social-link">◈</a>
+            <a href="#" class="social-link">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__nav-title">Navigate</div>
+          <ul class="footer__nav-links">
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="films.html">My Films</a></li>
+            <li><a href="finance.html">Finance</a></li>
+            <li><a href="book-reviews.html">Book Reviews</a></li>
+            <li><a href="film-reviews.html">Film Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__nav-title">Connect</div>
+          <ul class="footer__nav-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Letterboxd</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 Kyra Jolly. All rights reserved.</span>
+        <span>kyrajolly.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Kyra Jolly</title>
+  <meta name="description" content="Learn about Kyra Jolly — filmmaker, writer, and finance enthusiast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .about-text h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 400; margin: 2rem 0 0.75rem; }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .skill-card {
+      padding: 1.5rem;
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--blue);
+    }
+
+    .skill-card__name { font-weight: 700; font-size: 0.875rem; margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+    .skill-card__desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    .quote-block {
+      border-left: 3px solid var(--blue);
+      padding: 1.5rem 2rem;
+      margin: 3rem 0;
+      background: rgba(26,86,219,0.04);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .quote-block blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ═════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Kyra <span>Jolly</span></a>
+        <ul class="nav__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="films.html">Films</a></li>
+          <li><a href="finance.html">Finance</a></li>
+          <li><a href="book-reviews.html">Books</a></li>
+          <li><a href="film-reviews.html">Film Reviews</a></li>
+        </ul>
+        <button class="nav__hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="films.html">Films</a>
+    <a href="finance.html">Finance</a>
+    <a href="book-reviews.html">Books</a>
+    <a href="film-reviews.html">Film Reviews</a>
+  </div>
+
+  <!-- ═══ About Hero ══════════════════════════════════════════ -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Left: Text -->
+        <div class="about-text" style="color:white;">
+          <span class="label" style="color:var(--blue-light);" class="fade-in">About Me</span>
+          <h1 class="display-1 fade-in fade-in-delay-1" style="color:white; margin-top:0.75rem;">
+            I make<br/>
+            <em style="font-style:italic; font-weight:300;">things.</em>
+          </h1>
+          <p class="body-lg fade-in fade-in-delay-2" style="color:rgba(255,255,255,0.6); max-width:480px; margin-top:1.5rem;">
+            Filmmaker, writer, and thinker. I explore the world through multiple lenses — from camera to keyboard to spreadsheet.
+          </p>
+          <div style="margin-top:2.5rem;" class="fade-in fade-in-delay-3">
+            <a href="#contact" class="btn btn--white">Get in touch <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- Right: Image block -->
+        <div class="about-img-block fade-in fade-in-delay-2">
+          <div class="about-img-main">
+            <!-- Replace src with your photo: <img src="assets/images/profile.jpg" alt="Kyra Jolly"> -->
+            <span style="font-size:1rem; letter-spacing:0.15em; opacity:0.3;">YOUR PHOTO HERE</span>
+          </div>
+          <div class="about-img-accent">KJ</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Main Bio ════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="gap:5rem; align-items:start;">
+
+        <!-- Bio Text -->
+        <div class="about-text fade-in">
+          <div class="quote-block">
+            <blockquote>"I think in images, write in arguments, and wonder about everything in between."</blockquote>
+          </div>
+
+          <h2>The Short Version</h2>
+          <p>
+            I'm a <strong>filmmaker and writer</strong> based in [Your Location]. My work spans short film, documentary, fiction writing, and long-form critical essays on film and economics. I'm drawn to the intersections — between personal and political, cinematic and literary, creative and analytical.
+          </p>
+          <p>
+            I studied [Your Field] at [Your Institution], where I made my first short films and fell in love with the mechanics of storytelling. Since then I've continued making films independently while building a parallel life as a writer and thinker.
+          </p>
+
+          <h2>What I Do</h2>
+          <p>
+            On this site you'll find <strong>my film portfolio</strong> — short and documentary work exploring memory, place, and human relationships. You'll also find my <strong>writing on finance and economics</strong>, where I try to make complex systems legible and interesting to a broad audience.
+          </p>
+          <p>
+            I also write <strong>book and film reviews</strong> — not in the star-rating listicle sense, but in the deeper sense of trying to understand why a work does what it does, and whether it does it well.
+          </p>
+
+          <h2>Background</h2>
+          <p>
+            I grew up between [Place 1] and [Place 2], which gave me a slightly fragmented sense of home that's probably central to a lot of my work. I've been writing since I could hold a pen and filming since I could hold a camera — which, it turns out, are pretty similar impulses.
+          </p>
+        </div>
+
+        <!-- Skills + Contact -->
+        <div>
+          <div class="fade-in fade-in-delay-1">
+            <span class="label">What I work with</span>
+            <div class="skills-grid" style="margin-top:1.25rem;">
+              <div class="skill-card">
+                <div class="skill-card__name">Film Direction</div>
+                <div class="skill-card__desc">Short film, documentary, and experimental formats</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card__name">Screenwriting</div>
+                <div class="skill-card__desc">Original scripts and adaptations</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card__name">Critical Essays</div>
+                <div class="skill-card__desc">Long-form cultural and economic analysis</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card__name">Finance Writing</div>
+                <div class="skill-card__desc">Markets, macro, and monetary thought</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card__name">Book Reviews</div>
+                <div class="skill-card__desc">Fiction, non-fiction, and literary criticism</div>
+              </div>
+              <div class="skill-card">
+                <div class="skill-card__name">Film Reviews</div>
+                <div class="skill-card__desc">Cinema criticism across genres and eras</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact block -->
+          <div id="contact" style="margin-top:3rem; padding:2rem; background:var(--navy); border-radius:var(--radius-md);" class="fade-in fade-in-delay-2">
+            <span class="label" style="color:var(--blue-light);">Contact</span>
+            <h3 style="font-family:var(--font-display); font-size:1.5rem; color:white; margin:0.75rem 0 0.5rem;">Say hello</h3>
+            <p style="color:rgba(255,255,255,0.55); font-size:0.9rem; margin-bottom:1.5rem; line-height:1.65;">
+              For collaborations, commissions, or conversation — reach out anytime.
+            </p>
+            <a href="mailto:hello@kyrajolly.com" class="btn btn--white">
+              hello@kyrajolly.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Image Gallery ═══════════════════════════════════════ -->
+  <section class="section--sm section--cream">
+    <div class="container">
+      <div style="margin-bottom:2rem;" class="fade-in">
+        <span class="label">Gallery</span>
+        <h2 class="display-3" style="margin-top:0.5rem;">Behind the work</h2>
+      </div>
+
+      <div class="gallery-grid fade-in">
+        <!-- Replace background colors with <img> tags when you have photos -->
+        <!-- Template: <div class="gallery-item"><img src="assets/images/gallery-1.jpg" alt=""></div> -->
+        <div class="gallery-item" style="background: linear-gradient(145deg, #1A2D5A, #0D1035);"></div>
+        <div class="gallery-item" style="background: linear-gradient(145deg, #2D1B69, #1A2D5A);"></div>
+        <div class="gallery-item" style="background: linear-gradient(145deg, #0D3050, #1A4580);"></div>
+        <div class="gallery-item" style="background: linear-gradient(145deg, #3D1060, #2D1B69);"></div>
+        <div class="gallery-item" style="background: linear-gradient(145deg, #1A3560, #0D2048);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__logo">Kyra Jolly</div>
+          <p class="footer__tagline">Film, writing, and economic thought from a creative perspective.</p>
+          <div class="footer__social">
+            <a href="#" class="social-link">𝕏</a>
+            <a href="#" class="social-link">◎</a>
+            <a href="#" class="social-link">◈</a>
+            <a href="#" class="social-link">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__nav-title">Navigate</div>
+          <ul class="footer__nav-links">
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="films.html">My Films</a></li>
+            <li><a href="finance.html">Finance</a></li>
+            <li><a href="book-reviews.html">Book Reviews</a></li>
+            <li><a href="film-reviews.html">Film Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__nav-title">Connect</div>
+          <ul class="footer__nav-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Letterboxd</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 Kyra Jolly. All rights reserved.</span>
+        <span>kyrajolly.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

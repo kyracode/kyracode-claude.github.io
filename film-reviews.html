@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Film Reviews — Kyra Jolly</title>
+  <meta name="description" content="Critical film reviews covering cinema across genres, eras, and national traditions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Film review specific card — landscape orientation */
+    .film-review-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(6,13,26,0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .film-review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .film-review-card__still {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--grad-film);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .film-review-card__still img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition);
+    }
+
+    .film-review-card:hover .film-review-card__still img {
+      transform: scale(1.04);
+    }
+
+    .film-review-card__still-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,13,26,0.8) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+
+    .film-review-card__year {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+    }
+
+    .film-review-card__body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .film-review-card__director {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .film-review-card__title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .film-review-card__excerpt {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Hero review — large feature card */
+    .hero-review {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      min-height: 400px;
+      margin-bottom: 4rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-review__visual {
+      background: var(--grad-film);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-review__visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--navy) 100%);
+    }
+
+    .hero-review__content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .reviews-grid-films {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .reviews-grid-films { grid-template-columns: repeat(2, 1fr); }
+      .hero-review { grid-template-columns: 1fr; min-height: auto; }
+      .hero-review__visual { height: 260px; }
+    }
+
+    @media (max-width: 640px) {
+      .reviews-grid-films { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ═════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Kyra <span>Jolly</span></a>
+        <ul class="nav__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="films.html">Films</a></li>
+          <li><a href="finance.html">Finance</a></li>
+          <li><a href="book-reviews.html">Books</a></li>
+          <li><a href="film-reviews.html">Film Reviews</a></li>
+        </ul>
+        <button class="nav__hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="films.html">Films</a>
+    <a href="finance.html">Finance</a>
+    <a href="book-reviews.html">Books</a>
+    <a href="film-reviews.html">Film Reviews</a>
+  </div>
+
+  <!-- ═══ Page Header ════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content">
+        <span class="label fade-in">Film Reviews</span>
+        <h1 class="display-2 fade-in fade-in-delay-1" style="color:white; margin-top:0.75rem;">
+          Cinema as<br/><em style="font-style:italic; font-weight:300;">argument.</em>
+        </h1>
+        <p class="fade-in fade-in-delay-2">Critical responses to cinema old and new — asking not just whether a film works, but what it's working to do, and whether that thing is worth doing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Reviews ════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Hero review / featured -->
+      <div class="hero-review fade-in">
+        <div class="hero-review__visual"></div>
+        <div class="hero-review__content">
+          <span class="label" style="color:var(--blue-light);">Featured Review</span>
+          <h2 style="font-family:var(--font-display); font-size:clamp(1.5rem,3vw,2.25rem); color:white; margin:0.75rem 0 0.25rem;">All We Imagine as Light</h2>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem;">Dir. Payal Kapadia · 2024</div>
+          <div class="stars" style="margin-bottom:1rem;">★★★★★</div>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; line-height:1.7; margin-bottom:2rem;">
+            Kapadia's Palme d'Or winner moves through Mumbai with a luminous patience, following two nurses whose inner lives are rendered with such tenderness and specificity that the film becomes a kind of ethical act. A masterwork of quiet accumulation.
+          </p>
+          <a href="#" class="btn btn--white">Read the full review <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div style="margin-bottom:3rem;" class="fade-in">
+        <span class="topic-pill active" data-topic="all">All Films</span>
+        <span class="topic-pill" data-topic="contemporary">Contemporary</span>
+        <span class="topic-pill" data-topic="arthouse">Arthouse</span>
+        <span class="topic-pill" data-topic="classic">Classic</span>
+        <span class="topic-pill" data-topic="documentary">Documentary</span>
+      </div>
+
+      <div class="reviews-grid-films">
+
+        <!--
+          ╔══════════════════════════════════════════════════════════╗
+          ║  FILM REVIEW TEMPLATE — Copy this block to add a review ║
+          ╚══════════════════════════════════════════════════════════╝
+        -->
+        <article class="film-review-card fade-in" data-topic="contemporary">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #1A2D5A, #2D1B69);">
+            <!-- Replace with: <img src="assets/images/reviews/film-title.jpg" alt="Film still"> -->
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">2024</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Payal Kapadia</div>
+            <h3 class="film-review-card__title">All We Imagine as Light</h3>
+            <div class="stars">★★★★★</div>
+            <p class="film-review-card__excerpt">A masterwork of quiet accumulation. Kapadia renders Mumbai's lives with luminous patience.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <!-- END TEMPLATE -->
+
+        <article class="film-review-card fade-in fade-in-delay-1" data-topic="arthouse">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #0D3050, #1A4580);">
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">2023</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Jonathan Glazer</div>
+            <h3 class="film-review-card__title">The Zone of Interest</h3>
+            <div class="stars">★★★★★</div>
+            <p class="film-review-card__excerpt">A devastating reimagining of how to show the unspeakable. Glazer's restraint is its own kind of violence — the horror is precisely what we don't see.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="film-review-card fade-in fade-in-delay-2" data-topic="contemporary">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #2D1060, #1A0840);">
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">2024</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Brady Corbet</div>
+            <h3 class="film-review-card__title">The Brutalist</h3>
+            <div class="stars">★★★★½</div>
+            <p class="film-review-card__excerpt">Corbet's ambitious portrait of ambition itself — how art survives its makers, its patrons, and its times. Adrien Brody is extraordinary.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="film-review-card fade-in" data-topic="classic">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #3D1060, #250840);">
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">1963</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Federico Fellini</div>
+            <h3 class="film-review-card__title">8½</h3>
+            <div class="stars">★★★★★</div>
+            <p class="film-review-card__excerpt">The film about making a film about not being able to make a film. A hall of mirrors in which the confusion feels total, honest, and liberated. Still astonishing.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="film-review-card fade-in fade-in-delay-1" data-topic="documentary">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #1A3560, #0D2048);">
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">2020</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Kirsten Johnson</div>
+            <h3 class="film-review-card__title">Dick Johnson Is Dead</h3>
+            <div class="stars">★★★★★</div>
+            <p class="film-review-card__excerpt">A documentary about mortality, love, and the camera's relationship to both — made with her father as both subject and collaborator. Achingly tender.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="film-review-card fade-in fade-in-delay-2" data-topic="arthouse">
+          <div class="film-review-card__still" style="background: linear-gradient(145deg, #1A4530, #0D2820);">
+            <div class="film-review-card__still-overlay">
+              <span class="film-review-card__year">2022</span>
+            </div>
+          </div>
+          <div class="film-review-card__body">
+            <div class="film-review-card__director">Dir. Cristian Mungiu</div>
+            <h3 class="film-review-card__title">R.M.N.</h3>
+            <div class="stars">★★★★½</div>
+            <p class="film-review-card__excerpt">A dispassionate, surgical dissection of European provincial prejudice. Mungiu shows how racism persists not through monsters but through ordinary social mechanics — and refuses to let anyone off the hook.</p>
+            <a href="#" class="btn btn--ghost">Read review <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__logo">Kyra Jolly</div>
+          <p class="footer__tagline">Film, writing, and economic thought from a creative perspective.</p>
+          <div class="footer__social">
+            <a href="#" class="social-link">𝕏</a>
+            <a href="#" class="social-link">◎</a>
+            <a href="#" class="social-link">◈</a>
+            <a href="#" class="social-link">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__nav-title">Navigate</div>
+          <ul class="footer__nav-links">
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="films.html">My Films</a></li>
+            <li><a href="finance.html">Finance</a></li>
+            <li><a href="book-reviews.html">Book Reviews</a></li>
+            <li><a href="film-reviews.html">Film Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__nav-title">Connect</div>
+          <ul class="footer__nav-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">Letterboxd</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 Kyra Jolly. All rights reserved.</span>
+        <span>kyrajolly.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
